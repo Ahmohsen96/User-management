@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Photo;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,7 +23,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin', // Add this field to fillable
+
     ];
+
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'photoable');
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

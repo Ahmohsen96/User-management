@@ -21,6 +21,8 @@ return [
         Sanctum::currentApplicationUrlWithPort()
     ))),
 
+    'spa_domain' => env('SPA_DOMAIN'),
+
     /*
     |--------------------------------------------------------------------------
     | Sanctum Guards
